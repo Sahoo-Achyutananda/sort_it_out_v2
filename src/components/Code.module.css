@@ -1,0 +1,17 @@
+.code {
+  box-sizing: border-box;
+  width: 50%;
+  height: auto;
+  padding: 20px;
+
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: "14px";
+
+  /* background-color: #282a36ad; */
+}
+
+@media (max-width: 850px) {
+  .code {
+    width: 100%;
+  }
+}

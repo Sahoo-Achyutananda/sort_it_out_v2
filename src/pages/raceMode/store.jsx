@@ -1,0 +1,262 @@
+import bubbleSort from "../../algorithms/bubble";
+import insertionSort from "../../algorithms/insertion";
+import selectionSort from "../../algorithms/selection";
+import performMergeSort from "../../algorithms/merge";
+import performQuickSort from "../../algorithms/quick";
+import { generateArrayforRace } from "../../utils/utils";
+
+const algorithms = {
+  bubble: { name: "Bubble Sort", fn: bubbleSort },
+  selection: { name: "Selection Sort", fn: selectionSort },
+  insertion: { name: "Insertion Sort", fn: insertionSort },
+  merge: { name: "Merge Sort", fn: performMergeSort },
+  quick: { name: "Quick Sort", fn: performQuickSort },
+};
+
+const initialState = {
+  activeAlgorithms: {},
+  selectedAlgorithm: "bubble",
+  value: 20,
+  speed: 1,
+  array: generateArrayforRace(20),
+  raceStarted: false,
+  time: 0,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "ADD_ALGORITHM":
+      return {
+        ...state,
+        activeAlgorithms: {
+          ...state.activeAlgorithms,
+          [action.payload.algoName]: {
+            array: [...state.array],
+            speed: state.speed,
+            value: state.value,
+            isSorting: false,
+            time: 0,
+            highlightedIndices: [],
+            selectedIndices: [],
+            fn: action.payload.algoFun,
+          },
+        },
+      };
+    case "SET_SELECTED":
+      return {
+        ...state,
+        selectedAlgorithm: action.payload,
+      };
+    case "REMOVE_ALGORITHM": {
+      const updatedAlgos = { ...state.activeAlgorithms };
+      delete updatedAlgos[action.payload];
+      return {
+        ...state,
+        activeAlgorithms: updatedAlgos,
+      };
+    }
+    case "UPDATE_VALUE": {
+      const newArray = generateArrayforRace(action.payload);
+      const updatedActiveAlgorithms = Object.keys(
+        state.activeAlgorithms
+      ).reduce((acc, key) => {
+        acc[key] = {
+          ...state.activeAlgorithms[key],
+          array: newArray,
+          value: newArray.length,
+          isSorting: false,
+          time: 0,
+          highlightedIndices: [],
+          selectedIndices: [],
+          hold: [],
+        };
+        return acc;
+      }, {});
+
+      return {
+        ...state,
+        value: action.payload,
+        raceStarted: false,
+        array: [...newArray],
+        time: 0,
+        activeAlgorithms: updatedActiveAlgorithms,
+      };
+    }
+
+    case "UPDATE_SPEED": {
+      const newSpeed = action.payload;
+      const updatedActiveAlgorithms = Object.keys(
+        state.activeAlgorithms
+      ).reduce((acc, key) => {
+        acc[key] = {
+          ...state.activeAlgorithms[key],
+          speed: newSpeed,
+        };
+        return acc;
+      }, {});
+      return {
+        ...state,
+        speed: newSpeed,
+        activeAlgorithms: updatedActiveAlgorithms,
+      };
+    }
+
+    case "RACE-STARTED": {
+      const { activeAlgorithms } = state;
+      const updatedActiveAlgorithms = Object.keys(activeAlgorithms).reduce(
+        (acc, key) => {
+          acc[key] = {
+            ...activeAlgorithms[key],
+            isSorting: true,
+            time: 0,
+            highlightedIndices: [],
+            selectedIndices: [],
+            hold: [],
+          };
+          return acc;
+        },
+        {}
+      );
+      return {
+        ...state,
+        raceStarted: true,
+        time: 0,
+        activeAlgorithms: updatedActiveAlgorithms,
+      };
+    }
+
+    case "STOP-AND-RESET": {
+      const { activeAlgorithms } = state;
+      const updatedActiveAlgorithms = Object.keys(activeAlgorithms).reduce(
+        (acc, key) => {
+          acc[key] = {
+            ...activeAlgorithms[key],
+            isSorting: false,
+            time: 0,
+            highlightedIndices: [],
+            selectedIndices: [],
+            hold: [],
+          };
+          return acc;
+        },
+        {}
+      );
+      return {
+        ...state,
+        raceStarted: false,
+        time: 0,
+        activeAlgorithms: updatedActiveAlgorithms,
+      };
+    }
+
+    case "TICK": {
+      const updatedActiveAlgorithms = Object.keys(
+        state.activeAlgorithms
+      ).reduce((acc, key) => {
+        const algo = state.activeAlgorithms[key];
+        acc[key] = {
+          ...algo,
+          time: algo.isSorting ? state.time + 1 : algo.time,
+        };
+        return acc;
+      }, {});
+      return {
+        ...state,
+        time: state.raceStarted ? state.time + 1 : state.time,
+        activeAlgorithms: updatedActiveAlgorithms,
+      };
+    }
+
+    // CASES TO UPDATE activeAlgorithms
+
+    // to update the array while sorting, how to call ? -> dispatch({type : "arrayMovements", payload : [...array], algoName = "bubble"})
+    case "arrayMovements": {
+      const { algoName, payload } = action;
+      return {
+        ...state,
+        activeAlgorithms: {
+          ...state.activeAlgorithms,
+          [algoName]: {
+            ...state.activeAlgorithms[algoName],
+            array: payload,
+          },
+        },
+      };
+    }
+    case "selectedIndices": {
+      const { algoName, payload } = action;
+      return {
+        ...state,
+        activeAlgorithms: {
+          ...state.activeAlgorithms,
+          [algoName]: {
+            ...state.activeAlgorithms[algoName],
+            selectedIndices: payload,
+          },
+        },
+      };
+    }
+    case "highlightIndices": {
+      const { algoName, payload } = action;
+      return {
+        ...state,
+        activeAlgorithms: {
+          ...state.activeAlgorithms,
+          [algoName]: {
+            ...state.activeAlgorithms[algoName],
+            highlightedIndices: payload,
+          },
+        },
+      };
+    }
+
+    case "sortingStarted": {
+      const { algoName } = action;
+      return {
+        ...state,
+        activeAlgorithms: {
+          ...state.activeAlgorithms,
+          [algoName]: {
+            ...state.activeAlgorithms[algoName],
+            isSorting: true,
+            time: 0,
+          },
+        },
+      };
+    }
+    case "hold": {
+      const { algoName, payload } = action;
+      return {
+        ...state,
+        activeAlgorithms: {
+          ...state.activeAlgorithms,
+          [algoName]: {
+            ...state.activeAlgorithms[algoName],
+            hold: payload,
+          },
+        },
+      };
+    }
+
+    case "sortingCompleted": {
+      const { algoName } = action;
+      return {
+        ...state,
+        activeAlgorithms: {
+          ...state.activeAlgorithms,
+          [algoName]: {
+            ...state.activeAlgorithms[algoName],
+            isSorting: false,
+            selectedIndices: [],
+            highlightIndices: [],
+            hold: [],
+          },
+        },
+      };
+    }
+    default:
+      return state;
+  }
+}
+
+export { reducer, algorithms, initialState };

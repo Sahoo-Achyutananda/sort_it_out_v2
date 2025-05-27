@@ -1,0 +1,102 @@
+.arrayContainer {
+  background-color: rgba(236, 236, 236, 0.01);
+  /* background-color: #282a36; */
+  height: 400px;
+  width: 90vw;
+
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 20px;
+
+  overflow-x: auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.bar {
+  margin-inline: 1px;
+  background: linear-gradient(rgb(103, 3, 204));
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+
+  transition: all 0.1s ease-in-out;
+}
+
+.bar:hover {
+  transform: translateY(10px);
+  background: linear-gradient(rgb(77, 1, 152));
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  animation: float 1s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(10px) scale(1.05);
+  }
+  50% {
+    transform: translateY(15px) scale(1.05);
+  }
+}
+
+.box {
+  flex-shrink: 0; /* Prevent shrinking */
+  width: 70px; /* Fixed width */
+  height: 70px; /* Fixed height */
+  background: linear-gradient(rebeccapurple, rgb(132, 48, 95));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-inline: 2px;
+}
+.barContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.index {
+  box-sizing: border-box;
+  background-color: khaki;
+  color: black;
+  height: auto;
+  margin-inline: 1px;
+  font: 500 0.8rem "Poppins", sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.selected {
+  background: #4ef578;
+  margin-inline: 1px;
+}
+
+/* Add these to your ArrayContainer.module.css */
+.bar {
+  transition: height 0.3s ease-out, background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.barContainer {
+  transition: transform 0.3s ease-in-out;
+}
+
+.index {
+  background: khaki;
+  color: black;
+  /* transition: all 0.3s ease; */
+}
+
+.highlightedIndex {
+  background: #4ef578;
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .index {
+    font: 300 0.4rem "Poppins", sans-serif;
+  }
+}
