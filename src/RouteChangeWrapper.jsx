@@ -8,11 +8,11 @@ function RouteChangeWrapper({ children }) {
 
   useEffect(() => {
     setLoading(true);
-    // const timer = setTimeout(() => {
-    //   setLoading(false);
-    // }, 1000);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
 
-    // return () => setTimeout(timer);
+    return () => setTimeout(timer);
   }, [location]);
 
   return (
