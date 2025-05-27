@@ -61,13 +61,13 @@ body {
   width: 90%;
 
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
 }
 
 @media (max-width: 850px) {
   .infoDiv {
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     flex-direction: column;
   }
 }

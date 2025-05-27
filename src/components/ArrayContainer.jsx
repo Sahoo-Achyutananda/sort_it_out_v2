@@ -6,7 +6,7 @@ import Tooltip from "@mui/material/Tooltip";
 function ArrayContainer({ state }) {
   const arrayContainerRef = useRef(null);
   return (
-    <div>
+    <>
       <div className={styles.arrayContainer} ref={arrayContainerRef}>
         {state.toggle === "bar"
           ? state.array.map((value, i) => {
@@ -25,7 +25,7 @@ function ArrayContainer({ state }) {
             })}
       </div>
       <div></div>
-    </div>
+    </>
   );
 }
 
