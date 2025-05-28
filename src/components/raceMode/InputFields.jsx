@@ -15,6 +15,7 @@ import { MenuItem } from "@mui/material";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 
 import Title from "../Title.jsx";
 
@@ -28,6 +29,21 @@ function InputFields({
   runAlgos,
   // runAlgos,
 }) {
+  const notify = () =>
+    toast.error(
+      "Race in progress. Algorithm removal is disabled during an active session.",
+      {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
+      }
+    );
   const totalCount = Object.keys(state.activeAlgorithms).length;
   return (
     <div className={styles.Container}>
@@ -183,12 +199,27 @@ function InputFields({
                 </span>
                 <button
                   onClick={() =>
-                    dispatch({
-                      type: "REMOVE_ALGORITHM",
-                      payload: algoKey,
-                    })
+                    !state.raceStarted
+                      ? dispatch({
+                          type: "REMOVE_ALGORITHM",
+                          payload: algoKey,
+                        })
+                      : notify()
                   }
                 >
+                  {/* <ToastContainer
+                    position="top-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick={false}
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="dark"
+                    transition={Bounce}
+                  /> */}
                   ×
                 </button>
               </div>
