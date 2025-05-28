@@ -8,7 +8,11 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import DrawerList from "./TemporaryDrawer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import LaunchIcon from "@mui/icons-material/Launch";
+import styles from "./Navbar.module.css";
+import SelectNavigation from "../pages/homePage/SelectNavigation.jsx";
 // import Button from "@mui/material/Button";
 
 const titles = {
@@ -24,6 +28,7 @@ const titles = {
 export default function Navbar() {
   const [open, setOpen] = React.useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const pageTitle = titles[location.pathname] || " ";
 
   const toggleDrawer = (newOpen) => () => {
@@ -70,9 +75,29 @@ export default function Navbar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             {pageTitle}
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
+          <div className={styles.advBoard}>
+            {location.pathname === "/racemode" ? (
+              <SelectNavigation />
+            ) : (
+              <RaceModeAdv navigate={navigate} />
+            )}
+          </div>
         </Toolbar>
       </AppBar>
     </Box>
+  );
+}
+
+// function AlgoAdv() {
+//   return <div>You're my something something -</div>;
+// }
+
+function RaceModeAdv({ navigate }) {
+  return (
+    <div className={styles.raceModeAdv} onClick={() => navigate("/racemode")}>
+      <p>
+        🚀 Check which algorithm works faster on a given input. Visit Race Mode
+      </p>
+    </div>
   );
 }
