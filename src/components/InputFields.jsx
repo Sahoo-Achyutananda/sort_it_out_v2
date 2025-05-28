@@ -12,6 +12,7 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 
 const CustomToggleButton = styled(ToggleButton)(() => ({
   color: "white",
@@ -84,7 +85,11 @@ function InputFields({
             className={styles.buttonReset}
             onClick={() => dispatch({ type: "resetValues" })}
           >
-            <StopIcon fontSize="small" />
+            {state.isSorting ? (
+              <StopIcon fontSize="small" />
+            ) : (
+              <RestartAltIcon fontSize="small" />
+            )}
           </button>
         </div>
 

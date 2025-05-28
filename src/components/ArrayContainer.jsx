@@ -7,7 +7,14 @@ function ArrayContainer({ state }) {
   const arrayContainerRef = useRef(null);
   return (
     <>
-      <div className={styles.arrayContainer} ref={arrayContainerRef}>
+      <div
+        className={
+          state.toggle === "bar"
+            ? styles.arrayContainer
+            : styles.arrayContainerBoxView
+        }
+        ref={arrayContainerRef}
+      >
         {state.toggle === "bar"
           ? state.array.map((value, i) => {
               return (

@@ -28,7 +28,8 @@ function HomePage() {
             >
               Race Mode{" "}
             </a>{" "}
-            <CircleIcon fontSize="small" /> Visit{" "}
+            | {/* <CircleIcon fontSize="small" /> Visit{" "} */}
+            Visit{" "}
             <a
               style={{ color: "blue", cursor: "pointer" }}
               href="https://sorting-visualizer-achyutananda-sahoo.netlify.app/"
