@@ -1,5 +1,5 @@
-import { Ripples } from "ldrs/react";
-import "ldrs/react/Ripples.css";
+import { Grid } from "ldrs/react";
+import "ldrs/react/Grid.css";
 
 // Default values shown
 
@@ -14,7 +14,7 @@ function Loader() {
         justifyContent: "center",
       }}
     >
-      <Ripples size="200" speed="2" color="white" />
+      <Grid size="120" speed="2" color="white" />
     </div>
   );
 }
