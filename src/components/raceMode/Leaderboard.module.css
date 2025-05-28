@@ -120,3 +120,9 @@
     box-shadow: 0 0 3px 1.5px #fff, 0 0 5px 3px #f0f, 0 0 7px 3px #0ff;
   }
 }
+
+@media (max-width: 400px) {
+  .leaderboard > span {
+    font-size: 12px;
+  }
+}

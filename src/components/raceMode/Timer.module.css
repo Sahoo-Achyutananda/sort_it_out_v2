@@ -13,3 +13,10 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@media (max-width: 550px) {
+  .timer {
+    width: 60px;
+    font: 500 12px "Roboto", sans-serif;
+  }
+}

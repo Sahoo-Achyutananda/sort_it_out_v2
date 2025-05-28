@@ -129,7 +129,7 @@
 .compsDiv > span,
 .swapsDiv > span {
   color: white;
-  font: 500 12px "Poppins", sans-serif;
+  font: 500 13px "Poppins", sans-serif;
 }
 
 .compsDiv > div,
@@ -139,9 +139,24 @@
   background-color: rgba(102, 51, 153, 0.108);
   border-radius: 5px;
   color: white;
-  font: 500 12px "Poppins", sans-serif;
+  font: 500 13px "Poppins", sans-serif;
 
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 650px) {
+  .stats {
+    justify-content: center;
+  }
+  .compsDiv > span,
+  .swapsDiv > span {
+    font: 500 12px "Poppins", sans-serif;
+  }
+
+  .compsDiv > div,
+  .swapsDiv > div {
+    font: 500 12px "Poppins", sans-serif;
+  }
 }

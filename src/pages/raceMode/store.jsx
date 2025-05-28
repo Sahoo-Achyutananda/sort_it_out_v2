@@ -6,11 +6,11 @@ import performQuickSort from "../../algorithms/quick";
 import { generateArrayforRace } from "../../utils/utils";
 
 const algorithms = {
-  bubble: { name: "Bubble Sort", fn: bubbleSort },
-  selection: { name: "Selection Sort", fn: selectionSort },
-  insertion: { name: "Insertion Sort", fn: insertionSort },
-  merge: { name: "Merge Sort", fn: performMergeSort },
-  quick: { name: "Quick Sort", fn: performQuickSort },
+  bubble: { name: "Bubble Sort", fn: bubbleSort, short_name: "BS" },
+  selection: { name: "Selection Sort", fn: selectionSort, short_name: "SS" },
+  insertion: { name: "Insertion Sort", fn: insertionSort, short_name: "IS" },
+  merge: { name: "Merge Sort", fn: performMergeSort, short_name: "MS" },
+  quick: { name: "Quick Sort", fn: performQuickSort, short_name: "QS" },
 };
 
 const initialState = {

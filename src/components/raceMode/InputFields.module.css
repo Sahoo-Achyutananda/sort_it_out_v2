@@ -246,6 +246,10 @@
   gap: 5px;
 }
 
+.algoShortTitle {
+  display: none;
+}
+
 @media (max-width: 550px) {
   .comparisons,
   .swaps {
@@ -254,6 +258,11 @@
   }
 
   .algoTitle {
-    font-size: 15px;
+    display: none;
+  }
+
+  .algoShortTitle {
+    display: block;
+    font: 500 12px "Roboto", sans-serif;
   }
 }

@@ -9,13 +9,15 @@ function Leaderboard({ state }) {
           <LeaderboardIcon fontSize="large" />
         </div> */}
 
-        {Object.entries(state.activeAlgorithms).length
-          ? Object.entries(state.activeAlgorithms)
-              .sort(([, a], [, b]) => a.time - b.time)
-              .map(([key, algo], index) => (
-                <Leader value={key} state={state} algo={algo} index={index} />
-              ))
-          : `Add Algorithms. 1 vs 1 is Recommended 🙂 `}
+        {Object.entries(state.activeAlgorithms).length ? (
+          Object.entries(state.activeAlgorithms)
+            .sort(([, a], [, b]) => a.time - b.time)
+            .map(([key, algo], index) => (
+              <Leader value={key} state={state} algo={algo} index={index} />
+            ))
+        ) : (
+          <span>Add Algorithms. 1 vs 1 is Recommended 🙂</span>
+        )}
       </div>
     </>
   );

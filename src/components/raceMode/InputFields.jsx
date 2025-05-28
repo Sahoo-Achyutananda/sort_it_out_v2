@@ -177,6 +177,9 @@ function InputFields({
               <span className={styles.algoTitle}>
                 {algorithms[algoKey].name}
               </span>
+              <span className={styles.algoShortTitle}>
+                {algorithms[algoKey].short_name}
+              </span>
               <button
                 onClick={() =>
                   dispatch({

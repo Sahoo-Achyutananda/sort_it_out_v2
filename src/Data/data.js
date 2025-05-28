@@ -11,6 +11,7 @@ const algoInformation = {
     image: "/bubble-sort.png",
     link: "/bubble",
     name: "Bubble Sort",
+    short_name: "BS",
     interesting_facts: [
       "One of the first sorting algorithms taught in computer science.",
       "Rarely used in practice due to poor performance.",
@@ -42,6 +43,7 @@ function bubbleSort(arr) {
     image: "/insertion-sort.PNG",
     link: "/insertion",
     name: "Insertion Sort",
+    short_name: "IS",
     interesting_facts: [
       "Invented by John Mauchly in 1946.",
       "Efficient for small datasets or nearly sorted arrays.",
@@ -71,6 +73,7 @@ function insertionSort(arr) {
     image: "/selection-sort.png",
     link: "/selection",
     name: "Selection Sort",
+    short_name: "SS",
     interesting_facts: [
       "One of the simplest comparison-based sorting algorithms.",
       "Was used in early computing machines due to ease of implementation.",
@@ -101,6 +104,7 @@ function selectionSort(arr) {
     image: "/merge-sort.png",
     link: "/merge",
     name: "Merge Sort",
+    short_name: "MS",
     interesting_facts: [
       "Invented by John von Neumann in 1945.",
       "A classic example of the divide-and-conquer approach.",
@@ -139,6 +143,7 @@ function merge(left, right) {
     image: "/quick-sort.jpg",
     link: "/quick",
     name: "Quick Sort",
+    short_name: "QS",
     interesting_facts: [
       "Developed by Tony Hoare in 1959.",
       "Often the fastest sorting algorithm in practice.",
