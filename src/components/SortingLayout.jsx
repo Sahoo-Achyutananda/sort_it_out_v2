@@ -21,26 +21,28 @@ function SortingLayout({ algorithm, json }) {
   useEffect(() => {});
 
   return (
-    <div className={styles.SortingLayout}>
-      <Title title={json.name} />
-      <div className={styles.utilities}>
-        <InputFields
-          dispatch={dispatch}
-          state={state}
-          stateRef={stateRef}
-          initialState={initialState}
-          algo={algorithm}
-          controllerRef={controllerRef}
-        ></InputFields>
+    <>
+      <div className={styles.SortingLayout}>
+        <Title title={json.name} />
+        <div className={styles.utilities}>
+          <InputFields
+            dispatch={dispatch}
+            state={state}
+            stateRef={stateRef}
+            initialState={initialState}
+            algo={algorithm}
+            controllerRef={controllerRef}
+          ></InputFields>
+        </div>
+        <ArrayContainer state={state} />
       </div>
-      <ArrayContainer state={state} />
       <div className={styles.genInformation}>
         <div className={styles.infoDiv}>
           <Code json={json} />
           <Details json={json} />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

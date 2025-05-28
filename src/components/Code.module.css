@@ -5,13 +5,25 @@
   padding: 20px;
 
   font-family: "Consolas", "Courier New", monospace;
-  font-size: "14px";
+  font-size: 15px;
 
   /* background-color: #282a36ad; */
 }
 
+@media (max-width: 650px) {
+  .code {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 450px) {
+  .code {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 850px) {
   .code {
-    width: 90vw;
+    width: 100vw;
   }
 }
