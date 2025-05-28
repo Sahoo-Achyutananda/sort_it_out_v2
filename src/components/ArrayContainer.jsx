@@ -24,7 +24,16 @@ function ArrayContainer({ state }) {
               return <Box key={i} height={value} />;
             })}
       </div>
-      <div></div>
+      <div className={styles.stats}>
+        <div className={styles.compsDiv}>
+          <div>{state.comparisons}</div>
+          <span>Comparisons</span>
+        </div>
+        <div className={styles.swapsDiv}>
+          <div>{state.swaps}</div>
+          <span>Swaps</span>
+        </div>
+      </div>
     </>
   );
 }

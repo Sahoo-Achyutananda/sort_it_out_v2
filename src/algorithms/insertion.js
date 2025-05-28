@@ -17,12 +17,16 @@ async function insertionSort(arr, getStateRef, dispatch, controllerRef = null) {
 
     while (j >= 0 && array[j] > key) {
       if (!getState().isSorting) return;
+      dispatch({ type: "comparisonPlus", algoName: "insertion" });
+
       dispatch({
         type: "selectedIndices",
         payload: [j, j + 1, key],
         algoName: "insertion",
       });
       array[j + 1] = array[j];
+
+      dispatch({ type: "swapPlus", algoName: "insertion" });
       dispatch({
         type: "arrayMovements",
         payload: array,
@@ -33,6 +37,7 @@ async function insertionSort(arr, getStateRef, dispatch, controllerRef = null) {
       j = j - 1;
     }
     array[j + 1] = key;
+    dispatch({ type: "swapPlus", algoName: "insertion" });
     dispatch({ type: "arrayMovements", payload: array, algoName: "insertion" });
     speed = getState().speed;
     await utils.randomDelay(1 / speed);

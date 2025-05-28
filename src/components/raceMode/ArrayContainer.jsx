@@ -7,7 +7,7 @@ function ArrayContainer({ state, algorithm, algoKey, dispatch }) {
   const stateRef = useRef(state);
 
   useEffect(() => {
-    console.log(algorithm, dispatch);
+    // console.log(algorithm, dispatch);
     stateRef.current = state;
   }, [state]);
 

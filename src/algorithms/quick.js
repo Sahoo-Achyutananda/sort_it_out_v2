@@ -7,12 +7,14 @@ async function partition(arr, l, r, getStateRef, dispatch) {
   let i = l - 1;
 
   for (let j = l; j < r; j++) {
+    dispatch({ type: "comparisonPlus", algoName: "quick" });
     if (arr[j] <= pivot) {
       if (!getState().isSorting) return;
       dispatch({ type: "selectedIndices", payload: [j, r], algoName: "quick" });
       dispatch({ type: "highlightIndices", payload: [i], algoName: "quick" });
       i++;
       [arr[i], arr[j]] = [arr[j], arr[i]];
+      dispatch({ type: "swapPlus", algoName: "quick" });
       dispatch({
         type: "arrayMovements",
         payload: [...arr],
@@ -24,6 +26,7 @@ async function partition(arr, l, r, getStateRef, dispatch) {
   }
   [arr[i + 1], arr[r]] = [arr[r], arr[i + 1]];
   if (!getState().isSorting) return;
+  dispatch({ type: "swapPlus", algoName: "quick" });
   dispatch({ type: "arrayMovements", payload: [...arr], algoName: "quick" });
   speed = getState().speed;
   await utils.randomDelay(1 / speed);

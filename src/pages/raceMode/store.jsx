@@ -36,6 +36,8 @@ function reducer(state, action) {
             value: state.value,
             isSorting: false,
             time: 0,
+            comparisons: 0,
+            swaps: 0,
             highlightedIndices: [],
             selectedIndices: [],
             fn: action.payload.algoFun,
@@ -66,6 +68,8 @@ function reducer(state, action) {
           value: newArray.length,
           isSorting: false,
           time: 0,
+          comparisons: 0,
+          swaps: 0,
           highlightedIndices: [],
           selectedIndices: [],
           hold: [],
@@ -109,6 +113,8 @@ function reducer(state, action) {
             ...activeAlgorithms[key],
             isSorting: true,
             time: 0,
+            comparisons: 0,
+            swaps: 0,
             highlightedIndices: [],
             selectedIndices: [],
             hold: [],
@@ -133,6 +139,8 @@ function reducer(state, action) {
             ...activeAlgorithms[key],
             isSorting: false,
             time: 0,
+            comparisons: 0,
+            swaps: 0,
             highlightedIndices: [],
             selectedIndices: [],
             hold: [],
@@ -254,6 +262,34 @@ function reducer(state, action) {
         },
       };
     }
+
+    case "swapPlus": {
+      const { algoName } = action;
+      return {
+        ...state,
+        activeAlgorithms: {
+          ...state.activeAlgorithms,
+          [algoName]: {
+            ...state.activeAlgorithms[algoName],
+            swaps: state.activeAlgorithms[algoName].swaps + 1,
+          },
+        },
+      };
+    }
+    case "comparisonPlus": {
+      const { algoName } = action;
+      return {
+        ...state,
+        activeAlgorithms: {
+          ...state.activeAlgorithms,
+          [algoName]: {
+            ...state.activeAlgorithms[algoName],
+            comparisons: state.activeAlgorithms[algoName].comparisons + 1,
+          },
+        },
+      };
+    }
+
     default:
       return state;
   }

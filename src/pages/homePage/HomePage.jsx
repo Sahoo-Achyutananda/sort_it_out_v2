@@ -30,7 +30,7 @@ function HomePage() {
           <SelectNavigation />
         </div>
       </BackgroundVideo>
-      <div className={styles.content}>
+      {/* <div className={styles.content}>
         <div className={styles.cards}>
           {Object.entries(data).map(([key]) => {
             return (
@@ -46,7 +46,7 @@ function HomePage() {
             );
           })}
         </div>
-      </div>
+      </div> */}
       <div className={styles.raceModeSection}>
         <RaceMode />
       </div>

@@ -11,6 +11,8 @@ export function reducer(state, action) {
         selectedIndices: [],
         isSorting: false,
         time: 0,
+        swaps: 0,
+        comparisons: 0,
       };
     case "valueChange":
       return {
@@ -20,6 +22,8 @@ export function reducer(state, action) {
         selectedIndices: [],
         isSorting: false,
         time: 0,
+        swaps: 0,
+        comparisons: 0,
       };
     case "arrayMovements":
       return {
@@ -52,6 +56,16 @@ export function reducer(state, action) {
         ...state,
         time: state.isSorting ? state.time + 1 : state.time,
       };
+    case "swapPlus":
+      return {
+        ...state,
+        swaps: state.swaps + 1,
+      };
+    case "comparisonPlus":
+      return {
+        ...state,
+        comparisons: state.comparisons + 1,
+      };
     case "sortingCompleted":
       return {
         ...state,
@@ -74,5 +88,7 @@ export const initialState = {
   highlightIndices: [],
   isSorting: false,
   time: 0,
+  swaps: 0,
+  comparisons: 0,
   hold: [], // to highlight a particular bar/box in the visualizer - used to show current min element in Selection sort
 };

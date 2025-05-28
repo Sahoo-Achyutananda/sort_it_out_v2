@@ -10,7 +10,7 @@
   margin-top: 20px;
 
   overflow-x: auto;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   border-radius: 5px;
 }
 
@@ -99,4 +99,49 @@
   .index {
     font: 300 0.4rem "Poppins", sans-serif;
   }
+}
+
+.stats {
+  width: 90vw;
+  height: auto;
+  margin-bottom: 20px;
+
+  background-color: rgba(236, 236, 236, 0.01);
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-inline: 20px;
+  box-sizing: border-box;
+}
+
+.compsDiv,
+.swapsDiv {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.compsDiv > span,
+.swapsDiv > span {
+  color: white;
+  font: 500 12px "Poppins", sans-serif;
+}
+
+.compsDiv > div,
+.swapsDiv > div {
+  width: 120px;
+  height: 40px;
+  background-color: rgba(102, 51, 153, 0.108);
+  border-radius: 5px;
+  color: white;
+  font: 500 12px "Poppins", sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

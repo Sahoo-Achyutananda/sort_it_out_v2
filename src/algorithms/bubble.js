@@ -15,8 +15,8 @@ async function bubbleSort(arr, getStateRef, dispatch, controllerRef = null) {
       if (!getState().isSorting) return;
 
       speed = getState().speed;
-      console.log(speed);
 
+      dispatch({ type: "comparisonPlus", algoName: "bubble" });
       dispatch({
         type: "selectedIndices",
         payload: [j, j + 1],
@@ -29,6 +29,7 @@ async function bubbleSort(arr, getStateRef, dispatch, controllerRef = null) {
         await new Promise((resolve) => setTimeout(resolve, 200 / speed));
 
         [array[j], array[j + 1]] = [array[j + 1], array[j]];
+        dispatch({ type: "swapPlus", algoName: "bubble" });
         dispatch({
           type: "arrayMovements",
           payload: [...array],

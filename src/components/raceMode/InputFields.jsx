@@ -13,6 +13,9 @@ import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import { MenuItem } from "@mui/material";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
+import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
+
 import Title from "../Title.jsx";
 
 function InputFields({
@@ -164,8 +167,16 @@ function InputFields({
           <div key={algoKey} className={styles.algorithmContainer}>
             <div className={styles.algorithmHeader}>
               {/* <div>Time : {state.activeAlgorithms[algoKey]?.time}</div> */}
-              <Timer time={state.activeAlgorithms[algoKey]?.time} />
-              <h3>{algorithms[algoKey].name}</h3>
+              <div className={styles.sortingInsights}>
+                <Timer time={state.activeAlgorithms[algoKey]?.time} />
+                <Comparisons
+                  comparisons={state.activeAlgorithms[algoKey]?.comparisons}
+                />
+                <Swaps swaps={state.activeAlgorithms[algoKey]?.swaps} />
+              </div>
+              <span className={styles.algoTitle}>
+                {algorithms[algoKey].name}
+              </span>
               <button
                 onClick={() =>
                   dispatch({
@@ -187,6 +198,25 @@ function InputFields({
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+function Comparisons({ comparisons }) {
+  return (
+    <div className={styles.comparisons}>
+      {" "}
+      <CompareArrowsIcon fontSize="medium" /> {comparisons}{" "}
+    </div>
+  );
+}
+
+function Swaps({ swaps }) {
+  return (
+    <div className={styles.swaps}>
+      {" "}
+      <SwapHorizIcon fontSize="medium" />
+      {swaps}{" "}
     </div>
   );
 }

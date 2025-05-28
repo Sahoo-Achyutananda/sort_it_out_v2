@@ -25,14 +25,18 @@ async function selectionSort(arr, getStateRef, dispatch, controllerRef = null) {
       await utils.randomDelay(1 / speed);
 
       // console.log(controllerRef, "Hello");
+      dispatch({ type: "comparisonPlus", algoName: "selection" });
       if (array[min_index] > array[j]) {
         min_index = j;
       }
     }
 
-    let temp = array[min_index];
-    array[min_index] = array[i];
-    array[i] = temp;
+    if (min_index !== i) {
+      let temp = array[min_index];
+      array[min_index] = array[i];
+      array[i] = temp;
+      dispatch({ type: "swapPlus", algoName: "selection" });
+    }
 
     dispatch({ type: "arrayMovements", payload: array, algoName: "selection" });
   }
