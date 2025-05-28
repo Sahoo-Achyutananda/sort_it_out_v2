@@ -250,6 +250,10 @@
   display: none;
 }
 
+.battleField {
+  min-height: 700px;
+}
+
 @media (max-width: 550px) {
   .comparisons,
   .swaps {

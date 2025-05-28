@@ -12,10 +12,16 @@
 }
 
 .subtitle {
-  position: absolute;
+  /* position: absolute; */
+  margin-top: 10px;
   font: italic 15px "Roboto", sans-serif;
-  bottom: 126.4px;
-  left: 277px;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  /* bottom: 126.4px;
+  left: 277px; */
 }
 
 .titleCard {
@@ -35,7 +41,7 @@
   justify-content: center;
 
   position: relative;
-  animation: rainbow-glow 3s infinite linear;
+  animation: rainbow-glow-big 3s infinite linear;
 }
 
 .header {
@@ -73,17 +79,17 @@
   }
 
   .subtitle {
-    bottom: 121.8px !important;
-    left: 171.8px !important;
+    /* bottom: 121.8px !important;
+    left: 171.8px !important; */
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 570px) {
   .card {
     width: 350px !important;
   }
   .raceModeText > h3 {
-    font: 800 35px "Raleway", sans-serif;
+    font: 800 25px "Raleway", sans-serif !important;
   }
 
   .raceModeText > p {
@@ -93,18 +99,21 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 370px) {
   .card {
     width: 300px !important;
   }
   .raceModeText > h3 {
-    font: 800 35px "Raleway", sans-serif;
+    font: 800 25px "Raleway", sans-serif;
   }
 
   .raceModeText > p {
     margin-top: 20px;
     margin-bottom: 20px;
     font: 300 13px "Poppins", sans-serif;
+  }
+  .titleCard {
+    width: auto;
   }
 }
 
@@ -281,6 +290,21 @@
   }
   100% {
     box-shadow: 0 0 3px 1.5px #fff, 0 0 5px 3px #f0f, 0 0 7px 3px #0ff;
+  }
+}
+
+@keyframes rainbow-glow-big {
+  0% {
+    box-shadow: 0 0 6px 3px #fff, 0 0 10px 6px #f0f, 0 0 14px 6px #0ff;
+  }
+  33% {
+    box-shadow: 0 0 6px 3px #fff, 0 0 10px 6px #ff0, 0 0 14px 6px #f0f;
+  }
+  66% {
+    box-shadow: 0 0 6px 3px #fff, 0 0 10px 6px #0ff, 0 0 14px 6px #ff0;
+  }
+  100% {
+    box-shadow: 0 0 6px 3px #fff, 0 0 10px 6px #f0f, 0 0 14px 6px #0ff;
   }
 }
 

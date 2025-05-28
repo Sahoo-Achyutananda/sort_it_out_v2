@@ -8,6 +8,7 @@ import RaceMode from "./pages/raceMode/RaceMode";
 import HomePage from "./pages/homePage/HomePage.jsx";
 import RouteChangeWrapper from "./RouteChangeWrapper.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/quick" element={<QuickSort />} />
           <Route path="/racemode" element={<RaceMode />} />
         </Routes>
+        <Footer></Footer>
       </RouteChangeWrapper>
     </BrowserRouter>
   );

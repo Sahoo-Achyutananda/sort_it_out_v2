@@ -3,6 +3,7 @@ import styles from "./HomePage.module.css";
 import SelectNavigation from "./SelectNavigation";
 import BackgroundVideo from "./BackgroundVideo.jsx";
 import { useNavigate } from "react-router-dom";
+import CircleIcon from "@mui/icons-material/Circle";
 
 import data from "../../Data/data.js";
 
@@ -12,22 +13,30 @@ function HomePage() {
     <div className={styles.body}>
       <BackgroundVideo>
         <div className={styles.titleCard}>
-          <div className={styles.title}>
-            <h1>SORT IT OUT</h1>
-          </div>
-          <div className={styles.subtitle}>
-            Visit{" "}
-            <span
-              style={{ color: "blue", cursor: "pointer" }}
-              onClick={() => navigate("/racemode")}
-            >
-              Race Mode
-            </span>
-          </div>
           <div className={styles.element}>
             <TypedText>{["Analyze", "Vizualize", "Play"]}</TypedText>
           </div>
+          <div className={styles.title}>
+            <h1>SORT IT OUT</h1>
+          </div>
           <SelectNavigation />
+          <div className={styles.subtitle}>
+            Visit{" "}
+            <a
+              style={{ color: "blue", cursor: "pointer" }}
+              onClick={() => navigate("/racemode")}
+            >
+              Race Mode{" "}
+            </a>{" "}
+            <CircleIcon fontSize="small" /> Visit{" "}
+            <a
+              style={{ color: "blue", cursor: "pointer" }}
+              href="https://sorting-visualizer-achyutananda-sahoo.netlify.app/"
+              // onClick={() => navigate("/racemode")}
+            >
+              Version 1
+            </a>
+          </div>
         </div>
       </BackgroundVideo>
       {/* <div className={styles.content}>
@@ -62,7 +71,7 @@ function RaceMode() {
       <div className={styles.raceMode}>
         <div className={styles.raceModeText}>
           <h3>
-            <TypedText>{["Check Out RACE MODE 🚀 ..."]}</TypedText>
+            <TypedText>{["Check Out RACE MODE 🚀"]}</TypedText>
           </h3>
           <p>
             Ever wondered which sorting algorithm is the fastest? Let them

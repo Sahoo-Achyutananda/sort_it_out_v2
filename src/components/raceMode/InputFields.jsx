@@ -156,50 +156,52 @@ function InputFields({
         {/* <h2>LEADERBOARD</h2> */}
         <Leaderboard state={state} />
       </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateRows: `repeat(${totalCount}, 1fr)`,
-          gap: "10px",
-        }}
-      >
-        {Object.keys(state.activeAlgorithms).map((algoKey) => (
-          <div key={algoKey} className={styles.algorithmContainer}>
-            <div className={styles.algorithmHeader}>
-              {/* <div>Time : {state.activeAlgorithms[algoKey]?.time}</div> */}
-              <div className={styles.sortingInsights}>
-                <Timer time={state.activeAlgorithms[algoKey]?.time} />
-                <Comparisons
-                  comparisons={state.activeAlgorithms[algoKey]?.comparisons}
-                />
-                <Swaps swaps={state.activeAlgorithms[algoKey]?.swaps} />
+      <div className={styles.battleField}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateRows: `repeat(${totalCount}, 1fr)`,
+            gap: "10px",
+          }}
+        >
+          {Object.keys(state.activeAlgorithms).map((algoKey) => (
+            <div key={algoKey} className={styles.algorithmContainer}>
+              <div className={styles.algorithmHeader}>
+                {/* <div>Time : {state.activeAlgorithms[algoKey]?.time}</div> */}
+                <div className={styles.sortingInsights}>
+                  <Timer time={state.activeAlgorithms[algoKey]?.time} />
+                  <Comparisons
+                    comparisons={state.activeAlgorithms[algoKey]?.comparisons}
+                  />
+                  <Swaps swaps={state.activeAlgorithms[algoKey]?.swaps} />
+                </div>
+                <span className={styles.algoTitle}>
+                  {algorithms[algoKey].name}
+                </span>
+                <span className={styles.algoShortTitle}>
+                  {algorithms[algoKey].short_name}
+                </span>
+                <button
+                  onClick={() =>
+                    dispatch({
+                      type: "REMOVE_ALGORITHM",
+                      payload: algoKey,
+                    })
+                  }
+                >
+                  ×
+                </button>
               </div>
-              <span className={styles.algoTitle}>
-                {algorithms[algoKey].name}
-              </span>
-              <span className={styles.algoShortTitle}>
-                {algorithms[algoKey].short_name}
-              </span>
-              <button
-                onClick={() =>
-                  dispatch({
-                    type: "REMOVE_ALGORITHM",
-                    payload: algoKey,
-                  })
-                }
-              >
-                ×
-              </button>
-            </div>
 
-            <ArrayContainer
-              state={state}
-              algoKey={algoKey}
-              algorithm={state.activeAlgorithms[algoKey].fn}
-              dispatch={dispatch}
-            />
-          </div>
-        ))}
+              <ArrayContainer
+                state={state}
+                algoKey={algoKey}
+                algorithm={state.activeAlgorithms[algoKey].fn}
+                dispatch={dispatch}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
