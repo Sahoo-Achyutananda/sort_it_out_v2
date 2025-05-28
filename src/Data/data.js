@@ -1,5 +1,13 @@
+// import { RocketLaunchIcon } from "@mui/icons-material";
+import BubbleChartIcon from "@mui/icons-material/BubbleChart";
+import SortIcon from "@mui/icons-material/Sort";
+import FrontHandIcon from "@mui/icons-material/FrontHand";
+import MergeIcon from "@mui/icons-material/Merge";
+import RocketIcon from "@mui/icons-material/Rocket";
+
 const algoInformation = {
   bubbleSort: {
+    mui_icon: BubbleChartIcon,
     image: "/bubble-sort.png",
     link: "/bubble",
     name: "Bubble Sort",
@@ -30,6 +38,7 @@ function bubbleSort(arr) {
     `.trim(),
   },
   insertionSort: {
+    mui_icon: SortIcon,
     image: "/insertion-sort.PNG",
     link: "/insertion",
     name: "Insertion Sort",
@@ -58,6 +67,7 @@ function insertionSort(arr) {
     `.trim(),
   },
   selectionSort: {
+    mui_icon: FrontHandIcon,
     image: "/selection-sort.png",
     link: "/selection",
     name: "Selection Sort",
@@ -87,6 +97,7 @@ function selectionSort(arr) {
     `.trim(),
   },
   mergeSort: {
+    mui_icon: MergeIcon,
     image: "/merge-sort.png",
     link: "/merge",
     name: "Merge Sort",
@@ -124,6 +135,7 @@ function merge(left, right) {
     `.trim(),
   },
   quickSort: {
+    mui_icon: RocketIcon,
     image: "/quick-sort.jpg",
     link: "/quick",
     name: "Quick Sort",

@@ -61,7 +61,9 @@ function RaceMode() {
     <>
       <div className={styles.raceMode}>
         <div className={styles.raceModeText}>
-          <h3>Check Out RACE MODE ... </h3>
+          <h3>
+            <TypedText>{["Check Out RACE MODE 🚀 ..."]}</TypedText>
+          </h3>
           <p>
             Ever wondered which sorting algorithm is the fastest? Let them
             compete! In Race Mode, algorithms like Bubble Sort, Merge Sort, and

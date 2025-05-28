@@ -2,7 +2,8 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import { MenuItem } from "@mui/material";
-import AddBoxIcon from "@mui/icons-material/AddBox";
+import SearchIcon from "@mui/icons-material/Search";
+// import AddBoxIcon from "@mui/icons-material/AddBox";
 import styles from "./SelectNavigation.module.css";
 
 import { useState } from "react";
@@ -82,7 +83,7 @@ function SelectNavigation() {
       </FormControl>
       {/* <button onClick={handleAddAlgorithm}>Add Algorithm</button> */}
       <button className={styles.buttonAdd} onClick={() => handleVisualize()}>
-        <AddBoxIcon fontSize="small" sx={{ color: "white" }} />
+        <SearchIcon fontSize="small" sx={{ color: "white" }} />
       </button>
     </div>
   );

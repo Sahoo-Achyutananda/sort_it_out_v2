@@ -7,11 +7,13 @@ import QuickSort from "./pages/QuickSort";
 import RaceMode from "./pages/raceMode/RaceMode";
 import HomePage from "./pages/homePage/HomePage.jsx";
 import RouteChangeWrapper from "./RouteChangeWrapper.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 function App() {
   return (
     <BrowserRouter>
       <RouteChangeWrapper>
+        <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/bubble" element={<BubbleSort />} />
