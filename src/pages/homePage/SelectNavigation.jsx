@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 //   racemode: "/racemode",
 // };
 
-function SelectNavigation() {
+function SelectNavigation({ text }) {
   const navigate = useNavigate();
   const [select, setSelect] = useState("");
 
@@ -43,7 +43,7 @@ function SelectNavigation() {
             "&.Mui-focused": { color: "white" }, // darker purple on focus
           }}
         >
-          Algorithm
+          {text}
         </InputLabel>
 
         <Select

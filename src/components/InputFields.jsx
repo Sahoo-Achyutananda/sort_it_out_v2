@@ -13,6 +13,7 @@ import WidgetsIcon from "@mui/icons-material/Widgets";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
+import Tooltip from "@mui/material/Tooltip";
 
 const CustomToggleButton = styled(ToggleButton)(() => ({
   color: "white",
@@ -33,40 +34,44 @@ function InputFields({
 }) {
   return (
     <div className={styles.userInputs}>
-      <div className={`${styles.sliderDiv} ${styles.speedDiv}`}>
-        <SpeedIcon fontSize="small" sx={{ color: "white" }} />
-        <Slider
-          aria-label="Speed"
-          defaultValue={initialState.speed}
-          valueLabelDisplay="auto"
-          step={0.25}
-          marks
-          min={0.25}
-          max={10}
-          value={state.speed}
-          onChange={(e) =>
-            dispatch({ type: "speedChange", payload: e.target.value })
-          }
-          className={styles.speedSlider}
-        />
-      </div>
-      <div className={`${styles.sliderDiv} ${styles.valueDiv}`}>
-        <DataArrayIcon fontSize="small" sx={{ color: "white" }} />
-        <Slider
-          aria-label="Speed"
-          defaultValue={20}
-          valueLabelDisplay="auto"
-          step={1}
-          marks
-          min={1}
-          max={50}
-          value={state.value}
-          onChange={(e) =>
-            dispatch({ type: "valueChange", payload: e.target.value })
-          }
-          className={styles.valueSlider}
-        />
-      </div>
+      <Tooltip title="Set Speed 🏃‍♀️" followCursor interactive>
+        <div className={`${styles.sliderDiv} ${styles.speedDiv}`}>
+          <SpeedIcon fontSize="small" sx={{ color: "white" }} />
+          <Slider
+            aria-label="Speed"
+            defaultValue={initialState.speed}
+            valueLabelDisplay="auto"
+            step={0.25}
+            marks
+            min={0.25}
+            max={10}
+            value={state.speed}
+            onChange={(e) =>
+              dispatch({ type: "speedChange", payload: e.target.value })
+            }
+            className={styles.speedSlider}
+          />
+        </div>
+      </Tooltip>
+      <Tooltip title="Set Array Size 📦" interactive followCursor>
+        <div className={`${styles.sliderDiv} ${styles.valueDiv}`}>
+          <DataArrayIcon fontSize="small" sx={{ color: "white" }} />
+          <Slider
+            aria-label="Speed"
+            defaultValue={20}
+            valueLabelDisplay="auto"
+            step={1}
+            marks
+            min={1}
+            max={50}
+            value={state.value}
+            onChange={(e) =>
+              dispatch({ type: "valueChange", payload: e.target.value })
+            }
+            className={styles.valueSlider}
+          />
+        </div>
+      </Tooltip>
       <div className={styles.utilitiesDiv}>
         <div className={styles.buttonDiv}>
           <button
@@ -81,20 +86,28 @@ function InputFields({
           >
             <PlayArrowIcon fontSize="small" />
           </button>
-          <button
-            className={styles.buttonReset}
-            onClick={() => dispatch({ type: "resetValues" })}
+          <Tooltip
+            title={state.isSorting ? "Stop Sorting 🚫" : "Generate NEW Array"}
           >
-            {state.isSorting ? (
-              <StopIcon fontSize="small" />
-            ) : (
-              <RestartAltIcon fontSize="small" />
-            )}
-          </button>
+            <button
+              className={styles.buttonReset}
+              onClick={() => dispatch({ type: "resetValues" })}
+            >
+              {state.isSorting ? (
+                <StopIcon fontSize="small" />
+              ) : (
+                <RestartAltIcon fontSize="small" />
+              )}
+            </button>
+          </Tooltip>
         </div>
 
         <div className={styles.utilities}>
-          <Timer getState={() => state} dispatch={dispatch} />
+          <Tooltip title="Time Taken ⌛" interactive followCursor>
+            <div>
+              <Timer getState={() => state} dispatch={dispatch} />
+            </div>
+          </Tooltip>
           <ToggleButtonGroup
             color="primary"
             size="small"
@@ -105,12 +118,16 @@ function InputFields({
                 dispatch({ type: "toggleChange", payload: newValue });
             }}
           >
-            <CustomToggleButton value="bar">
-              <BarChartIcon fontSize="small" />
-            </CustomToggleButton>
-            <CustomToggleButton value="box">
-              <WidgetsIcon fontSize="small" />
-            </CustomToggleButton>
+            <Tooltip title="Bar View">
+              <CustomToggleButton value="bar">
+                <BarChartIcon fontSize="small" />
+              </CustomToggleButton>
+            </Tooltip>
+            <Tooltip title="Box View">
+              <CustomToggleButton value="box">
+                <WidgetsIcon fontSize="small" />
+              </CustomToggleButton>
+            </Tooltip>
           </ToggleButtonGroup>
         </div>
       </div>

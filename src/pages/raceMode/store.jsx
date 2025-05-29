@@ -175,6 +175,12 @@ function reducer(state, action) {
       };
     }
 
+    case "RACE-COMPLETED":
+      return {
+        ...state,
+        raceStarted: false,
+      };
+
     // CASES TO UPDATE activeAlgorithms
 
     // to update the array while sorting, how to call ? -> dispatch({type : "arrayMovements", payload : [...array], algoName = "bubble"})
@@ -246,20 +252,47 @@ function reducer(state, action) {
       };
     }
 
+    // case "sortingCompleted": {
+    //   const { algoName } = action;
+    //   return {
+    //     ...state,
+    //     activeAlgorithms: {
+    //       ...state.activeAlgorithms,
+    //       [algoName]: {
+    //         ...state.activeAlgorithms[algoName],
+    //         isSorting: false,
+    //         selectedIndices: [],
+    //         highlightIndices: [],
+    //         hold: [],
+    //       },
+    //     },
+    //   };
+    // }
+
     case "sortingCompleted": {
       const { algoName } = action;
+
+      // Update the completed algorithm
+      const updatedActiveAlgorithms = {
+        ...state.activeAlgorithms,
+        [algoName]: {
+          ...state.activeAlgorithms[algoName],
+          isSorting: false,
+          selectedIndices: [],
+          highlightIndices: [],
+          hold: [],
+        },
+      };
+
+      // Check if ALL algorithms have finished sorting
+      const allAlgorithmsFinished = Object.values(
+        updatedActiveAlgorithms
+      ).every((algo) => !algo.isSorting);
+
       return {
         ...state,
-        activeAlgorithms: {
-          ...state.activeAlgorithms,
-          [algoName]: {
-            ...state.activeAlgorithms[algoName],
-            isSorting: false,
-            selectedIndices: [],
-            highlightIndices: [],
-            hold: [],
-          },
-        },
+        activeAlgorithms: updatedActiveAlgorithms,
+        raceStarted: !allAlgorithmsFinished, // Set raceStarted to false if all are done
       };
     }
 

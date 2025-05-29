@@ -29,6 +29,7 @@ function RaceMode() {
         dispatch
       );
     });
+    // dispatch({ type: "RACE-COMPLETED" });
   }
 
   const handleAddAlgorithm = () => {

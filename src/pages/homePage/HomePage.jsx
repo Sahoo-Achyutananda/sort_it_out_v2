@@ -5,7 +5,7 @@ import BackgroundVideo from "./BackgroundVideo.jsx";
 import { useNavigate } from "react-router-dom";
 import CircleIcon from "@mui/icons-material/Circle";
 
-import data from "../../Data/data.js";
+// import data from "../../Data/data.js";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function HomePage() {
           <div className={styles.title}>
             <h1>SORT IT OUT</h1>
           </div>
-          <SelectNavigation />
+          <SelectNavigation text={"Algorithm"} />
           <div className={styles.subtitle}>
             Visit{" "}
             <a

@@ -114,3 +114,34 @@ reducer function cases : - the algoName has to be passed separately -> this shou
 </div>
 
 .entries converts the object's key-value pairs in array [[key,value],[key,value]] like this--- .... 
+
+
+q) when isSorting of all algos in activeAlgorithms is set to false .. then racefinished must be set to false - 
+
+prompts - 
+
+function runAlgos() {
+    Object.keys(state.activeAlgorithms).forEach((key) => {
+      const algoFn = state.activeAlgorithms[key].fn;
+      const initialArray = [...state.activeAlgorithms[key].array]; // Use a copy
+      algoFn(
+        initialArray,
+        () => stateRef.current.activeAlgorithms[key],
+        dispatch
+      );
+    });
+    dispatch({ type: "RACE-COMPLETED" });
+  }
+
+how can i dispatch race -completed only at the end ?? now due to async ops - it is executed first
+
+solution given was to use Promise.all() -> but it would require the algos to call resolve() within the code
+-> actual solution : we can check the "isSorting " every time
+-> learnt a new method : every()
+-> 
+Comparison with Other Array Methods
+Method	Checks For...	Returns true When...
+.every()	All elements pass	Every element satisfies the condition.
+.some()	At least one element passes	Any element satisfies the condition.
+.filter()	Filters elements	Returns a new array of matching elements.
+.find()	Finds the first match	Returns the first matching element.

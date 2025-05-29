@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import DrawerList from "./TemporaryDrawer";
 import { useLocation, useNavigate } from "react-router-dom";
+import Tooltip from "@mui/material/Tooltip";
 
 import LaunchIcon from "@mui/icons-material/Launch";
 import styles from "./Navbar.module.css";
@@ -77,7 +78,16 @@ export default function Navbar() {
           </Typography>
           <div className={styles.advBoard}>
             {location.pathname === "/racemode" ? (
-              <SelectNavigation />
+              <Tooltip
+                title="Check each algorithm Independently 🚀"
+                followCursor
+                interactive
+                placement="bottom"
+              >
+                <div>
+                  <SelectNavigation text={"Algorithm"} />
+                </div>
+              </Tooltip>
             ) : (
               <RaceModeAdv navigate={navigate} />
             )}
