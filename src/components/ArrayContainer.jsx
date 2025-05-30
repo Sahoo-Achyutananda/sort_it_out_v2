@@ -66,15 +66,11 @@ function ArrayContainer({ state }) {
         </div>
         <div className={styles.counts}>
           <div className={styles.compsDiv}>
-            <div className={compBlink ? styles.compBlink : ""}>
-              {state.comparisons}
-            </div>
+            <div>{state.comparisons}</div>
             <span>Comparisons</span>
           </div>
           <div className={styles.swapsDiv}>
-            <div className={swapBlink ? styles.swapBlink : ""}>
-              {state.swaps}
-            </div>
+            <div>{state.swaps}</div>
             <span>Swaps</span>
           </div>
         </div>

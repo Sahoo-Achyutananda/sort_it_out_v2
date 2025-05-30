@@ -203,8 +203,15 @@
     /* margin-top: 10px; */
     font-size: 12px;
   }
+  .descriptionDiv > div {
+    height: 60px;
+    font: 500 10px "Poppins", sans-serif;
+    padding-inline: 15px;
+  }
+
   .compsDiv > span,
-  .swapsDiv > span {
+  .swapsDiv > span,
+  .descriptionDiv > span {
     font: 500 12px "Poppins", sans-serif;
   }
 
