@@ -80,6 +80,10 @@
   background: #4ef578;
   margin-inline: 1px;
 }
+.compared {
+  background: #a418eae2 !important;
+  margin-inline: 1px;
+}
 
 /* Add these to your ArrayContainer.module.css */
 .bar {
@@ -171,4 +175,48 @@
     height: 50px;
     width: 50px;
   }
+}
+
+@keyframes glowBorder {
+  0% {
+    box-shadow: 0 0 5px rgba(147, 112, 219, 0.8),
+      0 0 10px rgba(147, 112, 219, 0.6), 0 0 15px rgba(147, 112, 219, 0.4),
+      0 0 20px rgba(147, 112, 219, 0.2);
+  }
+  25% {
+    box-shadow: 0 0 10px rgba(186, 85, 211, 0.8),
+      0 0 20px rgba(186, 85, 211, 0.6), 0 0 30px rgba(186, 85, 211, 0.4),
+      0 0 40px rgba(186, 85, 211, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.8),
+      0 0 30px rgba(138, 43, 226, 0.6), 0 0 45px rgba(138, 43, 226, 0.4),
+      0 0 60px rgba(138, 43, 226, 0.2);
+  }
+  75% {
+    box-shadow: 0 0 20px rgba(153, 50, 204, 0.8),
+      0 0 40px rgba(153, 50, 204, 0.6), 0 0 60px rgba(153, 50, 204, 0.4),
+      0 0 80px rgba(153, 50, 204, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(147, 112, 219, 0.8),
+      0 0 10px rgba(147, 112, 219, 0.6), 0 0 15px rgba(147, 112, 219, 0.4),
+      0 0 20px rgba(147, 112, 219, 0.2);
+  }
+}
+
+.glowEffect {
+  animation: glowBorder 4s ease-in-out infinite;
+  margin-top: 20px;
+  /* border-radius: 10px; */
+}
+
+.compBlink {
+  background-color: #4ef578e2 !important;
+  color: black !important;
+}
+
+.swapBlink {
+  background-color: #a418eae2 !important;
+  color: black !important;
 }

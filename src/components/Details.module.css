@@ -23,6 +23,15 @@
   gap: 25px;
 }
 
+.detailsTitle {
+  font: 800 30px "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+
+  width: 90%;
+}
 .description {
   box-sizing: border-box;
   height: auto;
@@ -32,9 +41,6 @@
   justify-content: center;
   border-radius: 5px;
   background-color: #1c191e99;
-
-  /* border-bottom: solid white 0.5px;
-  border-right: solid white 0.5px; */
   padding: 20px;
 
   transition: animation 0.1s ease;
@@ -157,7 +163,20 @@
   .container,
   .description,
   .table,
-  .details {
+  .details,
+  .detailsTitle {
     width: 90vw;
+  }
+}
+
+@media (max-width: 650px) {
+  .detailsTitle {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 450px) {
+  .detailsTitle {
+    font-size: 24px;
   }
 }

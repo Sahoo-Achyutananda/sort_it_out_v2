@@ -6,14 +6,38 @@ import Tooltip from "@mui/material/Tooltip";
 
 function ArrayContainer({ state }) {
   const arrayContainerRef = useRef(null);
+  // const compSpan = useRef(null);
+  const [compBlink, setCompBlink] = useState(false);
+  const [swapBlink, setSwapBlink] = useState(false);
+
+  useEffect(() => {
+    setCompBlink(true);
+    const speedFactor = 1000 / state.speed;
+    const timer = setTimeout(() => {
+      setCompBlink(false);
+    }, speedFactor);
+
+    return () => clearTimeout(timer);
+  }, [state.comparisons, state.speed]);
+
+  useEffect(() => {
+    setSwapBlink(true);
+    const speedFactor = 1000 / state.speed;
+    const timer = setTimeout(() => {
+      setSwapBlink(false);
+    }, speedFactor);
+
+    return () => clearTimeout(timer);
+  }, [state.comparisons, state.speed]);
+
   return (
     <>
       <div
-        className={
+        className={`${
           state.toggle === "bar"
             ? styles.arrayContainer
             : styles.arrayContainerBoxView
-        }
+        }`}
         ref={arrayContainerRef}
       >
         {state.toggle === "bar"
@@ -29,16 +53,18 @@ function ArrayContainer({ state }) {
               );
             })
           : state.array.map((value, i) => {
-              return <Box key={i} height={value} />;
+              return <Box key={i} state={state} index={i} height={value} />;
             })}
       </div>
       <div className={styles.stats}>
         <div className={styles.compsDiv}>
-          <div>{state.comparisons}</div>
+          <div className={compBlink ? styles.compBlink : ""}>
+            {state.comparisons}
+          </div>
           <span>Comparisons</span>
         </div>
         <div className={styles.swapsDiv}>
-          <div>{state.swaps}</div>
+          <div className={swapBlink ? styles.swapBlink : ""}>{state.swaps}</div>
           <span>Swaps</span>
         </div>
       </div>
@@ -65,6 +91,7 @@ function Bar({ arrayContainerRef, state, height, index }) {
   const barClasses = [
     styles.bar,
     state.selectedIndices.includes(index) ? styles.selected : "",
+    // state.swappedIndices.includes(index) ? styles.compared : "",
   ].join(" ");
 
   const indexClasses = [
@@ -89,7 +116,12 @@ function Bar({ arrayContainerRef, state, height, index }) {
   );
 }
 
-function Box({ height }) {
-  return <div className={styles.box}>{height}</div>;
+function Box({ state, height, index }) {
+  const boxClasses = [
+    styles.box,
+    state.selectedIndices.includes(index) ? styles.selected : "",
+    // state.swappedIndices.includes(index) ? styles.compared : "",
+  ].join(" ");
+  return <div className={boxClasses}>{height}</div>;
 }
 export default ArrayContainer;

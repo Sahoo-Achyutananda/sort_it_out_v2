@@ -21,12 +21,18 @@ async function insertionSort(arr, getStateRef, dispatch, controllerRef = null) {
 
       dispatch({
         type: "selectedIndices",
-        payload: [j, j + 1, key],
+        payload: [j, j + 1],
         algoName: "insertion",
       });
+      // await utils.randomDelay(1 / speed);
+      dispatch({
+        type: "swapPlus",
+        payload: [j, j + 1],
+        algoName: "insertion",
+      });
+
       array[j + 1] = array[j];
 
-      dispatch({ type: "swapPlus", algoName: "insertion" });
       dispatch({
         type: "arrayMovements",
         payload: array,
@@ -36,8 +42,9 @@ async function insertionSort(arr, getStateRef, dispatch, controllerRef = null) {
       await utils.randomDelay(1 / speed);
       j = j - 1;
     }
+    dispatch({ type: "swapPlus", payload: [j + 1, i], algoName: "insertion" });
+    // await utils.randomDelay(1 / speed);
     array[j + 1] = key;
-    dispatch({ type: "swapPlus", algoName: "insertion" });
     dispatch({ type: "arrayMovements", payload: array, algoName: "insertion" });
     speed = getState().speed;
     await utils.randomDelay(1 / speed);

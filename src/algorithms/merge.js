@@ -22,10 +22,11 @@ async function merge(arr, l, mid, r, getStateRef, dispatch) {
     dispatch({ type: "comparisonPlus", algoName: "merge" });
     if (array_1[i] <= array_2[j]) {
       arr[k] = array_1[i];
-      dispatch({ type: "swapPlus", algoName: "merge" });
+      dispatch({ type: "swapPlus", payload: [k, i], algoName: "merge" });
       i++;
     } else {
       arr[k] = array_2[j];
+      dispatch({ type: "swapPlus", payload: [k, j], algoName: "merge" });
       j++;
     }
     k++;
@@ -37,7 +38,7 @@ async function merge(arr, l, mid, r, getStateRef, dispatch) {
   while (i < array_1.length) {
     if (!getState().isSorting) return;
     arr[k++] = array_1[i++];
-    dispatch({ type: "swapPlus", algoName: "merge" });
+    dispatch({ type: "swapPlus", payload: [k - 1, i - 1], algoName: "merge" });
     dispatch({ type: "arrayMovements", payload: [...arr], algoName: "merge" });
     speed = getState().speed;
     await utils.randomDelay(1 / speed);
@@ -46,7 +47,7 @@ async function merge(arr, l, mid, r, getStateRef, dispatch) {
   while (j < array_2.length) {
     if (!getState().isSorting) return;
     arr[k++] = array_2[j++];
-    dispatch({ type: "swapPlus", algoName: "merge" });
+    dispatch({ type: "swapPlus", payload: [k - 1, j - 1], algoName: "merge" });
     dispatch({ type: "arrayMovements", payload: [...arr], algoName: "merge" });
     speed = getState().speed;
     await utils.randomDelay(1 / speed);

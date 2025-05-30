@@ -1,15 +1,22 @@
 import styles from "./Details.module.css";
 import { useEffect, useState } from "react";
 import TimeProgressBar from "./TimerProgressBar";
+import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 
 function Details({ json }) {
   return (
-    <div className={styles.details}>
-      <Description>{json.description}</Description>
-      <Slider>{json.interesting_facts}</Slider>
-      <TimeComplexity data={json.time_complexity} />
-      <SpaceComplexity data={json.space_complexity} />
-    </div>
+    <>
+      <div className={styles.details}>
+        <span className={styles.detailsTitle}>
+          <TipsAndUpdatesIcon />
+          General Information
+        </span>
+        <Description>{json.description}</Description>
+        <Slider>{json.interesting_facts}</Slider>
+        <TimeComplexity data={json.time_complexity} />
+        <SpaceComplexity data={json.space_complexity} />
+      </div>
+    </>
   );
 }
 
