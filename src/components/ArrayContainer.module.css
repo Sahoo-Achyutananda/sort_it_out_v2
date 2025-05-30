@@ -122,13 +122,21 @@
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding-inline: 20px;
   box-sizing: border-box;
 }
 
+.counts {
+  display: flex;
+}
+.description {
+  display: flex;
+  width: 100%;
+}
 .compsDiv,
-.swapsDiv {
+.swapsDiv,
+.descriptionDiv {
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -137,8 +145,13 @@
   gap: 5px;
 }
 
+.descriptionDiv {
+  width: 100%;
+}
+
 .compsDiv > span,
-.swapsDiv > span {
+.swapsDiv > span,
+.descriptionDiv > span {
   color: white;
   font: 500 13px "Poppins", sans-serif;
 }
@@ -157,9 +170,38 @@
   justify-content: center;
 }
 
-@media (max-width: 650px) {
-  .stats {
+.descriptionDiv > div {
+  width: 100%;
+  height: 40px;
+  background-color: rgba(102, 51, 153, 0.108);
+  border-radius: 5px;
+  color: white;
+  font: 500 13px "Poppins", sans-serif;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .descriptionDiv > div {
+  width: 100%;
+  height: 60px;
+  text-align: center;
+} */
+
+@media (max-width: 850px) {
+  .stats,
+  .description {
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    padding: 10px;
+  }
+
+  .descriptionDiv {
+    width: 90%;
+    /* margin-top: 10px; */
+    font-size: 12px;
   }
   .compsDiv > span,
   .swapsDiv > span {
@@ -177,40 +219,6 @@
   }
 }
 
-@keyframes glowBorder {
-  0% {
-    box-shadow: 0 0 5px rgba(147, 112, 219, 0.8),
-      0 0 10px rgba(147, 112, 219, 0.6), 0 0 15px rgba(147, 112, 219, 0.4),
-      0 0 20px rgba(147, 112, 219, 0.2);
-  }
-  25% {
-    box-shadow: 0 0 10px rgba(186, 85, 211, 0.8),
-      0 0 20px rgba(186, 85, 211, 0.6), 0 0 30px rgba(186, 85, 211, 0.4),
-      0 0 40px rgba(186, 85, 211, 0.2);
-  }
-  50% {
-    box-shadow: 0 0 15px rgba(138, 43, 226, 0.8),
-      0 0 30px rgba(138, 43, 226, 0.6), 0 0 45px rgba(138, 43, 226, 0.4),
-      0 0 60px rgba(138, 43, 226, 0.2);
-  }
-  75% {
-    box-shadow: 0 0 20px rgba(153, 50, 204, 0.8),
-      0 0 40px rgba(153, 50, 204, 0.6), 0 0 60px rgba(153, 50, 204, 0.4),
-      0 0 80px rgba(153, 50, 204, 0.2);
-  }
-  100% {
-    box-shadow: 0 0 5px rgba(147, 112, 219, 0.8),
-      0 0 10px rgba(147, 112, 219, 0.6), 0 0 15px rgba(147, 112, 219, 0.4),
-      0 0 20px rgba(147, 112, 219, 0.2);
-  }
-}
-
-.glowEffect {
-  animation: glowBorder 4s ease-in-out infinite;
-  margin-top: 20px;
-  /* border-radius: 10px; */
-}
-
 .compBlink {
   background-color: #4ef578e2 !important;
   color: black !important;
@@ -220,3 +228,8 @@
   background-color: #a418eae2 !important;
   color: black !important;
 }
+
+/* .description {
+  color: white;
+  background-color: rgba(102, 51, 153, 0.108);
+} */

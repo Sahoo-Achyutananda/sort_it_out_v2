@@ -13,6 +13,7 @@ export function reducer(state, action) {
         isSorting: false,
         time: 0,
         swaps: 0,
+        description: "Start a sort to see details.",
         comparisons: 0,
       };
     case "valueChange":
@@ -25,6 +26,7 @@ export function reducer(state, action) {
         isSorting: false,
         time: 0,
         swaps: 0,
+        description: "Start a sort to see details.",
         comparisons: 0,
       };
     case "arrayMovements":
@@ -85,6 +87,13 @@ export function reducer(state, action) {
         swappedIndices: [],
         hold: [],
       };
+
+    case "setDescription":
+      return {
+        ...state,
+        description: action.payload,
+      };
+
     case "toggleChange":
       return { ...state, toggle: action.payload };
   }
@@ -101,6 +110,7 @@ export const initialState = {
   time: 0,
   swaps: 0,
   comparisons: 0,
+  description: "Start to see details.",
   swappedIndices: [],
   hold: [], // to highlight a particular bar/box in the visualizer - used to show current min element in Selection sort
 };

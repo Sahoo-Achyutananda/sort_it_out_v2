@@ -56,16 +56,27 @@ function ArrayContainer({ state }) {
               return <Box key={i} state={state} index={i} height={value} />;
             })}
       </div>
+
       <div className={styles.stats}>
-        <div className={styles.compsDiv}>
-          <div className={compBlink ? styles.compBlink : ""}>
-            {state.comparisons}
+        <div className={styles.description}>
+          <div className={styles.descriptionDiv}>
+            <div>{state.description}</div>
+            <span>What's Happening</span>
           </div>
-          <span>Comparisons</span>
         </div>
-        <div className={styles.swapsDiv}>
-          <div className={swapBlink ? styles.swapBlink : ""}>{state.swaps}</div>
-          <span>Swaps</span>
+        <div className={styles.counts}>
+          <div className={styles.compsDiv}>
+            <div className={compBlink ? styles.compBlink : ""}>
+              {state.comparisons}
+            </div>
+            <span>Comparisons</span>
+          </div>
+          <div className={styles.swapsDiv}>
+            <div className={swapBlink ? styles.swapBlink : ""}>
+              {state.swaps}
+            </div>
+            <span>Swaps</span>
+          </div>
         </div>
       </div>
     </>
