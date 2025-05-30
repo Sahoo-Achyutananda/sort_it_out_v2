@@ -197,6 +197,7 @@ async function performMergeSort(
       payload: "Array is fully sorted!",
     });
     dispatch({ type: "sortingCompleted", algoName: "merge" });
+
     console.log(controllerRef);
   }
 }

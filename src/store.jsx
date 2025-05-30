@@ -1,4 +1,5 @@
 import * as utils from "./utils/utils";
+import { launchConfetti } from "./utils/confetti.js";
 
 export function reducer(state, action) {
   switch (action.type) {
@@ -78,7 +79,8 @@ export function reducer(state, action) {
     //     ...state,
     //     swappedIndices: action.payload,
     //   };
-    case "sortingCompleted":
+    case "sortingCompleted": {
+      launchConfetti();
       return {
         ...state,
         isSorting: false,
@@ -87,6 +89,7 @@ export function reducer(state, action) {
         swappedIndices: [],
         hold: [],
       };
+    }
 
     case "setDescription":
       return {
