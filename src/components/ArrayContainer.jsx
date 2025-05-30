@@ -7,28 +7,28 @@ import Tooltip from "@mui/material/Tooltip";
 function ArrayContainer({ state }) {
   const arrayContainerRef = useRef(null);
   // const compSpan = useRef(null);
-  const [compBlink, setCompBlink] = useState(false);
-  const [swapBlink, setSwapBlink] = useState(false);
+  // const [compBlink, setCompBlink] = useState(false);
+  // const [swapBlink, setSwapBlink] = useState(false);
 
-  useEffect(() => {
-    setCompBlink(true);
-    const speedFactor = 1000 / state.speed;
-    const timer = setTimeout(() => {
-      setCompBlink(false);
-    }, speedFactor);
+  // useEffect(() => {
+  //   setCompBlink(true);
+  //   const speedFactor = 1000 / state.speed;
+  //   const timer = setTimeout(() => {
+  //     setCompBlink(false);
+  //   }, speedFactor);
 
-    return () => clearTimeout(timer);
-  }, [state.comparisons, state.speed]);
+  //   return () => clearTimeout(timer);
+  // }, [state.comparisons, state.speed]);
 
-  useEffect(() => {
-    setSwapBlink(true);
-    const speedFactor = 1000 / state.speed;
-    const timer = setTimeout(() => {
-      setSwapBlink(false);
-    }, speedFactor);
+  // useEffect(() => {
+  //   setSwapBlink(true);
+  //   const speedFactor = 1000 / state.speed;
+  //   const timer = setTimeout(() => {
+  //     setSwapBlink(false);
+  //   }, speedFactor);
 
-    return () => clearTimeout(timer);
-  }, [state.comparisons, state.speed]);
+  //   return () => clearTimeout(timer);
+  // }, [state.comparisons, state.speed]);
 
   return (
     <>
