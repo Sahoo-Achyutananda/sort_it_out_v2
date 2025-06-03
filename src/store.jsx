@@ -3,6 +3,26 @@ import { launchConfetti } from "./utils/confetti.js";
 
 export function reducer(state, action) {
   switch (action.type) {
+    case "customInput": {
+      const str = action.payload;
+      const arr = str
+        .trim()
+        .split(/\s+/)
+        .map((i) => parseInt(i))
+        .filter((num) => !isNaN(num) && num < 300);
+      // console.log(arr);
+      return {
+        ...state,
+        value: arr.length ? arr.length : 20,
+        array: arr.length
+          ? arr
+          : Array.from(
+              { length: 20 },
+              () => Math.floor(Math.random() * 350) + 1
+            ),
+      };
+    }
+
     case "speedChange":
       return { ...state, speed: Number(action.payload) };
     case "resetValues":
@@ -25,6 +45,7 @@ export function reducer(state, action) {
         selectedIndices: [],
         swappedIndices: [],
         isSorting: false,
+        custom_input: "",
         time: 0,
         swaps: 0,
         description: "Start a sort to see details.",
@@ -103,6 +124,7 @@ export function reducer(state, action) {
 }
 
 export const initialState = {
+  custom_input: [],
   speed: 1,
   value: 20,
   toggle: "bar", // can have only 2 values - bar and box
