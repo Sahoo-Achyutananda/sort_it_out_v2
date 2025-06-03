@@ -9,7 +9,7 @@ export function reducer(state, action) {
         .trim()
         .split(/\s+/)
         .map((i) => parseInt(i))
-        .filter((num) => !isNaN(num) && num < 300);
+        .filter((num) => !isNaN(num) && num <= 300);
       // console.log(arr);
       return {
         ...state,
